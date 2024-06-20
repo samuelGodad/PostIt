@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostIT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+</head>
+
+<body>
+<div class="container">
+    <h1>PostIT - Upload Your Videos</h1>
+    <div class="content">
+        <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="video">Upload Video</label>
+                <input type="file" name="video" id="video" accept="video/*" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" placeholder="Description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <input type="text" name="tags" id="tags" placeholder="Tags">
+            </div>
+            <div class="form-group">
+                <label for="hashtags">Hashtags</label>
+                <input type="text" name="hashtags" id="hashtags" placeholder="Hashtags">
+            </div>
+            <div class="form-group">
+                <label>Platforms</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="platforms" value="tiktok"> TikTok</label>
+                    <label><input type="checkbox" name="platforms" value="instagram"> Instagram</label>
+                    <label><input type="checkbox" name="platforms" value="youtube"> YouTube</label>
+                </div>
+            </div>
+            <button type="submit">Upload</button>
+        </form>
+        <div id="video-container">
+            <video id="uploaded-video" controls style="display:none;"></video>
+            <div id="loading-spinner" style="display:none;">Uploading...</div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
