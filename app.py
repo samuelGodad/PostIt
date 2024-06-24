@@ -1,14 +1,11 @@
-from urllib.parse import urlencode
-
-from flask import Flask, request, render_template, jsonify, url_for, redirect
 import os
 
+from flask import Flask, request, render_template, jsonify, url_for
+from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
+
 # AIzaSyBfkd99S201FLBZohkHmsAnSj0ohCx30QI
-import requests
 
 # from example import uploadVideo
 
@@ -25,6 +22,16 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/')
 def index():
 	return render_template('index.html')
+
+
+@app.route('/privacy-policy')
+def privacy_policy():
+	return render_template('privacy_policy.html')
+
+
+@app.route('/terms-of-service')
+def terms_of_service():
+	return render_template('terms-of-service.html')
 
 
 @app.route('/uploads', methods=['POST'])
@@ -55,6 +62,7 @@ def upload():
 
 def upload_to_tiktok(video_path, description, tags, hashtags):
 	pass
+
 
 def upload_to_instagram(video_path, description, tags, hashtags):
 	# Implement Instagram API integration here
